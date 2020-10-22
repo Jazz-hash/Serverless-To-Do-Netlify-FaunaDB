@@ -1,0 +1,12 @@
+{
+  "name": "serverless-todo-netlify-fauna",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Jazz-hash/serverless-todo-netlify-fauna.git",
+  "author": "Jazz-hash <jazzelmehmood6@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
