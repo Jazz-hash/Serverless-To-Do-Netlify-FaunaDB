@@ -10,12 +10,15 @@ const IdentityProvider = (props) => {
 
   useEffect(() => {
     netlifyIdentity.init({});
-  }, []);
+  });
   netlifyIdentity.on("login", (user) => {
     netlifyIdentity.close();
     setUser(user);
   });
-  netlifyIdentity.on("logout", (user) => setUser());
+  netlifyIdentity.on("logout", (user) => {
+    netlifyIdentity.close();
+    setUser();
+  });
 
   return (
     <IdentityContext.Provider
