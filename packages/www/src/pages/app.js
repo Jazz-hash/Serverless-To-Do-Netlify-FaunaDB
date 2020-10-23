@@ -7,7 +7,7 @@ import { Link } from "gatsby";
 let Dash = () => {
   const { user, identity: netlifyIdentity } = useContext(IdentityContext);
 
-  console.log(user);
+  console.log(user, user.user_metadata);
   return (
     <Container>
       <Flex as="nav">
@@ -25,12 +25,12 @@ let Dash = () => {
               netlifyIdentity.logout();
             }}
           >
-            Logout {user.user.user_metadata.full_name}
+            Logout {user.user_metadata.full_name}
           </NavLink>
         )}
       </Flex>
       <Flex sx={{ flexDirection: "column", padding: 3 }}>
-        <div>Dash hasUser: {user && user.user.user_metadata.full_name}</div>
+        <div>Dash hasUser: {user && user.user_metadata.full_name}</div>
       </Flex>
     </Container>
   );
