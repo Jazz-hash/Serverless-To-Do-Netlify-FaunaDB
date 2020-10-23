@@ -15,15 +15,13 @@ const IdentityProvider = (props) => {
     netlifyIdentity.close();
     setUser(user);
   });
-  netlifyIdentity.on("logout", (user) => {
+  netlifyIdentity.on("logout", () => {
     netlifyIdentity.close();
     setUser();
   });
 
   return (
-    <IdentityContext.Provider
-      value={{ identity: netlifyIdentity, user: undefined }}
-    >
+    <IdentityContext.Provider value={{ identity: netlifyIdentity, user }}>
       {props.children}
     </IdentityContext.Provider>
   );
