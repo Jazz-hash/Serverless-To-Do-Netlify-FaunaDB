@@ -5,7 +5,8 @@ import { Button, Container, Flex, Heading, NavLink } from "theme-ui";
 import { Link } from "gatsby";
 
 let Dash = () => {
-  const user = useContext(IdentityContext);
+  const { user, identity: netlifyIdentity } = useContext(IdentityContext);
+
   console.log(user);
   return (
     <Container>
@@ -17,13 +18,19 @@ let Dash = () => {
           Dashboard
         </NavLink>
         {user && (
-          <NavLink to="#!" p={2}>
-            {user.user_metadata.full_name}
+          <NavLink
+            to="#!"
+            p={2}
+            onClick={() => {
+              netlifyIdentity.logout();
+            }}
+          >
+            Logout {user.user.user_metadata.full_name}
           </NavLink>
         )}
       </Flex>
       <Flex sx={{ flexDirection: "column", padding: 3 }}>
-        <div>Dash hasUser: {user && user.user_metadata.full_name}</div>
+        <div>Dash hasUser: {user && user.user.user_metadata.full_name}</div>
       </Flex>
     </Container>
   );
